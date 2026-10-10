@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Quinta · Control de despachos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Distribuidora La Quinta S.A.S.</h1>
+    <p>Control de despachos con validación de existencias</p>
+  </header>
+
+  <!-- Menú para cambiar de vista -->
+  <nav>
+    <button id="btn-registro" class="activo">Registro de despacho</button>
+    <button id="btn-historial">Historial de movimientos</button>
+  </nav>
+
+  <!-- VISTA 1: Registro -->
+  <main id="vista-registro">
+    <form id="form-despacho">
+      <label>Solicitante
+        <input type="text" name="solicitante" required placeholder="Nombre de quien solicita">
+      </label>
+
+      <label>Correo
+        <input type="email" name="correo" required placeholder="nombre@correo.com">
+      </label>
+
+      <label>Código del producto
+        <input type="text" name="codigo_producto" required list="codigos" placeholder="INS-0101">
+        <datalist id="codigos">
+          <option value="INS-0101">Harina de trigo x 25 kg</option>
+          <option value="INS-0102">Azúcar refinada x 50 kg</option>
+          <option value="INS-0203">Aceite vegetal x 20 L</option>
+          <option value="INS-0204">Arroz blanco x 25 kg</option>
+          <option value="INS-0305">Servilletas x 1000 u</option>
+          <option value="INS-0306">Vasos desechables 7 oz x 2500</option>
+          <option value="INS-0407">Pollo congelado x 10 kg</option>
+          <option value="INS-0408">Queso mozzarella x 5 kg</option>
+        </datalist>
+      </label>
+
+      <label>Cantidad
+        <input type="number" name="cantidad" required min="1" step="1" placeholder="10">
+      </label>
+
+      <label>Destino
+        <input type="text" name="destino" required placeholder="Restaurante o sede de destino">
+      </label>
+
+      <label>Motivo
+        <select name="motivo" required>
+          <option value="despacho">Despacho</option>
+          <option value="traslado entre sedes">Traslado entre sedes</option>
+          <option value="avería">Avería</option>
+        </select>
+      </label>
+
+      <button type="submit" id="btn-enviar">Registrar despacho</button>
+    </form>
+
+    <!-- Aquí se muestra lo que responde Make -->
+    <section id="resultado" hidden>
+      <h2 id="res-estado"></h2>
+      <p id="res-mensaje"></p>
+    </section>
+  </main>
+
+  <!-- VISTA 2: Historial -->
+  <main id="vista-historial" hidden>
+    <button id="btn-actualizar" type="button">Actualizar historial</button>
+    <p id="hist-estado"></p>
+    <div class="tabla-scroll">
+      <table id="tabla">
+        <thead>
+          <tr>
+            <th>Fecha y hora</th><th>ID</th><th>Producto</th><th>Cantidad</th>
+            <th>Destino</th><th>Motivo</th><th>Saldo antes</th>
+            <th>Saldo después</th><th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
