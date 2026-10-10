@@ -74,6 +74,3 @@ No se requiere instalar dependencias con npm para abrir la interfaz estática. L
 
 Proyecto académico — Parcial 1.
 
-## Licencia
-
-No se especifica una licencia en el repositorio. Si se desea permitir la reutilización pública del código, se recomienda elegir y añadir una licencia apropiada.
